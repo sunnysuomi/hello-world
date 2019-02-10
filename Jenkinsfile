@@ -14,7 +14,9 @@ pipeline {
     stage('UAT') {
       steps {
         echo 'Running UAT'
-        input(message: 'Are you happy', id: 'HappyReq', ok: 'Yes')
+        timeout(time: 60, unit: 'MINUTES') {
+          input(message: 'Are you happy', id: 'HappyReq', ok: 'Yes')
+        }
       }
     }
     stage('Prod') {
